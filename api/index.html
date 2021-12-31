@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>magnetMovies</title>
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  </head>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: black;
+      
+    }
+    .container
+    {
+        width: 100vw;
+        height: 100vh;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .container h1
+    {
+        font-size: 3rem;
+        color: white;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .container p
+    {
+        font-size: 1.5rem;
+        color: white;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .container form .search
+    {
+        width: 70%;
+        height: 3rem;
+        border-radius: 5px;
+        border: none;
+        background: #2f2f2f;
+        color: white;
+        font-size: 1.2rem;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+    .container form 
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    #search
+    {
+        margin-top: 5em;
+        width: 30vw;
+        height: 3rem;
+        border-radius: 5px;
+        border: none;
+        background: #2f2f2f;
+        color: white;
+        font-size: 1.2rem;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    #btn
+    {
+        width: 20%;
+        height: 3rem;
+        border-radius: 5px;
+        border: none;
+        background: #eb324b;
+        color: white;
+        font-size: 1.2rem;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+  </style>
+
+  <body>
+      <div class="container">
+            <h1 style="color:white;"><img src="https://img.icons8.com/external-prettycons-flat-prettycons/47/000000/external-magnet-essentials-prettycons-flat-prettycons.png"/> magnetMovies </h1>
+            <h2 style="color:white;">A simple movie search engine</h2>
+            <h3 style="color:white;">Search for movies and get the magnet links</h3>
+           
+                <input type="text" id="search" name="movie" placeholder="Eg: Tenet" required>
+                <button id="btn">Search</button>
+            
+
+      </div>
+      <script>
+         let btn = document.getElementById('btn')
+         btn.addEventListener('click', function(){
+            let movie = document.getElementById('search').value
+            window.location.href = `/${movie}`
+         })
+      </script>
+    
+      
+
+    
+  </body>
+</html>
