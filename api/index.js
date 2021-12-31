@@ -2,7 +2,7 @@
 const app = require("express")();
 const axios = require("axios");
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(__dirname + "/home.html");
 });
 
 
