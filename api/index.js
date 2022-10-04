@@ -1,21 +1,30 @@
-
-const app = require("express")();
-const axios = require("axios");
-app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/home.html");
+const app = require('express')();
+const axios = require('axios');
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/home.html');
 });
 
-
-app.get("/:id",async (req, res) => {
-    const id =  await req.params.id;
-    let title;
-   await axios.get(`http://www.omdbapi.com/?apikey=ae0a43d7&t=${id}`).then(async (response) => {
-    title = await response.data.Title;
-   try{
-    await axios.get(`https://yts.mx/api/v2/list_movies.json?query_term=${encodeURIComponent(title)}&quality=720p&sort_by=download_count`).then(async (response) => {
-        let hash = response.data.data.movies[0].torrents[0].hash;
-        let magnet = await`magnet:?xt=urn:btih:${hash}&dn=${encodeURIComponent(title)}+%5B720p%5D+&tr=udp://tracker.openbittorrent.com:80&tr=udp://open.demonii.com:1337&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://exodus.desync.com:6969`;
-        res.send(`
+app.get('/:id', async (req, res) => {
+  const id = await req.params.id;
+  let title;
+  await axios
+    .get(`http://www.omdbapi.com/?apikey=ae0a43d7&t=${id}`)
+    .then(async (response) => {
+      title = await response.data.Title;
+      try {
+        await axios
+          .get(
+            `https://yts.mx/api/v2/list_movies.json?query_term=${encodeURIComponent(
+              title
+            )}&quality=720p&sort_by=download_count`
+          )
+          .then(async (response) => {
+            let hash = response.data.data.movies[0].torrents[0].hash;
+            let magnet =
+              await `magnet:?xt=urn:btih:${hash}&dn=${encodeURIComponent(
+                title
+              )}+%5B720p%5D+&tr=udp://tracker.openbittorrent.com:80&tr=udp://open.demonii.com:1337&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://exodus.desync.com:6969`;
+            res.send(`
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -46,16 +55,14 @@ app.get("/:id",async (req, res) => {
 <marquee> <h1>Now Playing ${id}</h1></marquee>
 </body>
         </html>
-        `)
-        });
-   }
-    catch(err){
-        res.send("Movie not found");
-    }
-        
-    }).catch((error) => {
-        res.json({ error: error });
-    }
-    );
+        `);
+          });
+      } catch (err) {
+        res.send('Movie not found');
+      }
+    })
+    .catch((error) => {
+      res.json({ error: error });
+    });
 });
 module.exports = app;
