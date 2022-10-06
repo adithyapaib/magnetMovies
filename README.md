@@ -2,7 +2,7 @@
 
 Easily discover movie magnet links by conducting a search.
 
-## Technologies Used
+## Technologies Used;
 Node.js
 
 ## :handshake: Our Contributors
