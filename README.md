@@ -1,6 +1,6 @@
 # magnetMovies
 
-Discover movie magnet links by conducting a search.
+Easily discover movie magnet links by conducting a search.
 
 ## Technologies Used
 Node.js
