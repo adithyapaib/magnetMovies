@@ -1,6 +1,7 @@
 # magnetMovies
 
 Easily discover movie magnet links by conducting a search.
+Streaming made easy!!!
 
 ## Technologies Used;
 Node.js
